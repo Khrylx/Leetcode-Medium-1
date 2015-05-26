@@ -25,8 +25,6 @@ void sortColors(vector<int>& nums) {
             if (i != index0) {
                 nums[i] = 1;
             }
-            if (nums[index0] == 2)
-                nums[index2--] = 2;
             nums[index0++] = 0;
         }
         else if(nums[i] == 2){
@@ -37,10 +35,11 @@ void sortColors(vector<int>& nums) {
                 break;
             }
             
-            if(nums[index2] == 0)
+            if(nums[index2] == 0)          // if '0' was overwritten, place it in the write slot.
                 nums[index0++] = 0;
+            
             nums[index2--] = 2;
-            while (nums[index2] == 2) {
+            while (nums[index2] == 2) {    // find next slot for '2'
                 index2--;
             }
 
